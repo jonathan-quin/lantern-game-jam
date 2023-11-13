@@ -11,15 +11,23 @@ config_version=5
 [application]
 
 config/name="lantern game jam"
-run/main_scene="res://world.tscn"
+run/main_scene="res://menu.tscn"
 config/features=PackedStringArray("4.1", "GL Compatibility")
 config/icon="res://textures/icon.svg"
+
+[autoload]
+
+ScreenTransition="*res://screen_transition.tscn"
 
 [display]
 
 window/size/viewport_width=512
 window/size/viewport_height=288
 window/stretch/mode="viewport"
+
+[editor]
+
+version_control/autoload_on_startup=true
 
 [input]
 
