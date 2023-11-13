@@ -1,8 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://b2aqrv06xidli"]
+[gd_scene load_steps=8 format=3 uid="uid://b2aqrv06xidli"]
 
 [ext_resource type="PackedScene" uid="uid://bwd8ys1cqiick" path="res://scenes/player.tscn" id="1_ovkyq"]
 [ext_resource type="Texture2D" uid="uid://dvt06b5lrnndp" path="res://textures/icon.svg" id="2_mjcrr"]
 [ext_resource type="Shader" path="res://scenes/light.gdshader" id="3_xkn15"]
+
+[sub_resource type="Curve" id="Curve_alq3v"]
+_data = [Vector2(0.00886294, 0.976451), 0.0, 0.0, 0, 0, Vector2(0.787908, 1), 0.0, 0.0, 0, 0, Vector2(0.993129, 0.0288426), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_04pq6"]
 texture = ExtResource("2_mjcrr")
@@ -32,14 +36,16 @@ position = Vector2(235, 436)
 [node name="CPUParticles2D" type="CPUParticles2D" parent="player"]
 modulate = Color(0, 0, 0, 1)
 position = Vector2(13, 1)
+amount = 12
+lifetime = 0.6
 direction = Vector2(2.08165e-12, -1)
 gravity = Vector2(2.08165e-12, 30)
 initial_velocity_min = 40.0
 initial_velocity_max = 40.0
 angular_velocity_min = 401.63
 angular_velocity_max = 401.63
-scale_amount_min = 2.0
-scale_amount_max = 6.0
+scale_amount_max = 4.0
+scale_amount_curve = SubResource("Curve_alq3v")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_nvgnt")
