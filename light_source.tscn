@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://bj8xb7f8u0y33"]
+
+[ext_resource type="Script" path="res://light_source.gd" id="1_owo4o"]
+[ext_resource type="Shader" path="res://posableLightSource.gdshader" id="2_huf5p"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_laf5t"]
+resource_local_to_scene = true
+shader = ExtResource("2_huf5p")
+shader_parameter/posX = -99.9995
+shader_parameter/posY = 0.000475
+shader_parameter/enabled = null
+shader_parameter/value = 0.454
+shader_parameter/falloff = 1.842
+shader_parameter/background = Color(0.0627451, 0.0784314, 0.243137, 1)
+shader_parameter/objects = Color(1, 0.796078, 0.227451, 1)
+shader_parameter/sourceObjects = Color(0, 0, 0, 1)
+
+[node name="lightSource" type="Node2D"]
+script = ExtResource("1_owo4o")
+
+[node name="lightShader" type="ColorRect" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+z_index = 1000
+material = SubResource("ShaderMaterial_laf5t")
+offset_left = -631.0
+offset_top = -633.0
+offset_right = 711.0
+offset_bottom = 520.0
