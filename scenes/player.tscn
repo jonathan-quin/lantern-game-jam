@@ -1,12 +1,77 @@
-[gd_scene load_steps=9 format=3 uid="uid://bwd8ys1cqiick"]
+[gd_scene load_steps=16 format=3 uid="uid://bwd8ys1cqiick"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_aehhp"]
-[ext_resource type="Texture2D" uid="uid://vxx5o4qgtmu3" path="res://textures/jeremyIdleFrame1.png" id="2_27188"]
+[ext_resource type="Texture2D" uid="uid://c2r0fhe3u40fy" path="res://jeremy spritesv1.png" id="2_yeex2"]
 [ext_resource type="Script" path="res://scenes/GameCamera.gd" id="3_0tykd"]
 [ext_resource type="PackedScene" uid="uid://bj8xb7f8u0y33" path="res://light_source.tscn" id="3_lw75g"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0ryjh"]
 height = 32.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xwe20"]
+atlas = ExtResource("2_yeex2")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nrgc7"]
+atlas = ExtResource("2_yeex2")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ss4tj"]
+atlas = ExtResource("2_yeex2")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a6d16"]
+atlas = ExtResource("2_yeex2")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tu24r"]
+atlas = ExtResource("2_yeex2")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iny4u"]
+atlas = ExtResource("2_yeex2")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pyvve"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xwe20")
+}],
+"loop": true,
+"name": &"dash",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nrgc7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ss4tj")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a6d16")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tu24r")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iny4u")
+}],
+"loop": true,
+"name": &"wall slide",
+"speed": 5.0
+}]
 
 [sub_resource type="Animation" id="Animation_qxyaf"]
 resource_name = "light_idle"
@@ -14,7 +79,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("lightSource:fullLitRadius")
+tracks/0/path = NodePath("invertableStuff/lightSource:fullLitRadius")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -26,7 +91,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("lightSource:fallOffRadius")
+tracks/1/path = NodePath("invertableStuff/lightSource:fallOffRadius")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -41,7 +106,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("lightSource:fullLitRadius")
+tracks/0/path = NodePath("invertableStuff/lightSource:fullLitRadius")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -53,7 +118,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("lightSource:fallOffRadius")
+tracks/1/path = NodePath("invertableStuff/lightSource:fallOffRadius")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -75,23 +140,25 @@ script = ExtResource("1_aehhp")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_0ryjh")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0, 0, 0, 1)
-texture_filter = 1
-texture = ExtResource("2_27188")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_pyvve")
+animation = &"wall slide"
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="invertableStuff" type="Node2D" parent="."]
+
+[node name="lightSource" parent="invertableStuff" instance=ExtResource("3_lw75g")]
+position = Vector2(13, -2)
+fullLitRadius = 30
+fallOffRadius = 60
+fallOffCurve = 0.7
+
+[node name="Camera2D" type="Camera2D" parent="invertableStuff"]
+position = Vector2(13, -2)
 script = ExtResource("3_0tykd")
 
 [node name="coyoteTime" type="Timer" parent="."]
 wait_time = 0.1
 one_shot = true
-
-[node name="lightSource" parent="." instance=ExtResource("3_lw75g")]
-position = Vector2(13, -2)
-fullLitRadius = 30
-fallOffRadius = 60
-fallOffCurve = 0.7
 
 [node name="lightAnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
