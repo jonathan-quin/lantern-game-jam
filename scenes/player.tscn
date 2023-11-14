@@ -27,5 +27,7 @@ wait_time = 0.1
 one_shot = true
 
 [node name="lightSource" parent="." instance=ExtResource("3_lw75g")]
+position = Vector2(13, -2)
+fullLitRadius = 10
 
 [connection signal="timeout" from="coyoteTime" to="." method="_on_coyote_time_timeout"]

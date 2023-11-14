@@ -28,12 +28,12 @@ float daniWave(float input){
 //between 0 and 1
 float random (vec2 uv) {
     return fract(sin(dot(uv.xy,
-        vec2(12.9898,78.233))) * (43758.5453123 + daniWave(TIME * 10.0)));
+        vec2(12.9898,78.233))) * (43758.5453123) );
 }
 
 
 float lengthOfVec2 (vec2 vec){
-	return sqrt(vec.r * vec.r + vec.g * vec.g);
+	return sqrt((vec.x * vec.x) + (vec.y * vec.y));
 }
 
 void fragment() {
@@ -48,22 +48,28 @@ void fragment() {
 		
 		if (ogColor == sourceObjects){
 			
-			vec2 difference = (vec2(0.5,0.5) + vec2(posX/SCREEN_WIDTH,posY/SCREEN_HEIGHT)) - SCREEN_UV;
-			difference.y *= 9.0/16.0;
+			vec2 difference = (vec2(0.5 * SCREEN_WIDTH,0.5 * SCREEN_HEIGHT) + vec2(posX,posY)) - (SCREEN_UV * vec2(SCREEN_WIDTH,SCREEN_HEIGHT));
 			
 			//multiplied by the sqrt of 2 for some reason. Don't ask.
-			float distanceToMid = lengthOfVec2(difference) * 1.4142271f;
+			float distanceToMid = lengthOfVec2(difference);// * 1.4142271f ;
 			//this distance is in pixels.
 			
 			
-			float entireRange = falloffRange + fullyLitRange;
-			float newVal = map(fullyLitRange,entireRange,0,1,(distanceToMid - fullyLitRange) /falloffRange);
 			
-			newVal = max(0,newVal);
+			float entireRange = falloffRange + fullyLitRange;
+			float newVal = map(fullyLitRange,entireRange,1,0,distanceToMid);
+			
+			newVal = min(1.0,newVal);
 			
 			//the lower newVal is, the better lit the area is
-			if (random(UV) > newVal){
+			if (random(UV) < newVal){
+				
 				COLOR = objects;
+			}
+			COLOR = vec4(newVal,newVal,newVal,1.0);
+			
+			if (newVal < 1.0){
+				COLOR = vec4(newVal/0.5,newVal/0.5,newVal/0.5,1.0);
 			}
 			
 		} 

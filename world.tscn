@@ -1,10 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://b2aqrv06xidli"]
+[gd_scene load_steps=10 format=3 uid="uid://b2aqrv06xidli"]
 
 [ext_resource type="PackedScene" uid="uid://bwd8ys1cqiick" path="res://scenes/player.tscn" id="1_ovkyq"]
 [ext_resource type="Shader" path="res://setColorShader.gdshader" id="1_swem1"]
 [ext_resource type="Script" path="res://world.gd" id="2_84sop"]
 [ext_resource type="Texture2D" uid="uid://dvt06b5lrnndp" path="res://textures/icon.svg" id="2_mjcrr"]
-[ext_resource type="PackedScene" uid="uid://bj8xb7f8u0y33" path="res://light_source.tscn" id="3_x63ro"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4udpr"]
 shader = ExtResource("1_swem1")
@@ -35,11 +34,11 @@ material = SubResource("ShaderMaterial_4udpr")
 script = ExtResource("2_84sop")
 
 [node name="player" parent="." instance=ExtResource("1_ovkyq")]
-position = Vector2(235, 436)
+position = Vector2(205, 448)
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="player"]
 modulate = Color(0, 0, 0, 1)
-position = Vector2(13, 1)
+position = Vector2(13, -1)
 amount = 12
 lifetime = 0.6
 direction = Vector2(2.08165e-12, -1)
@@ -50,9 +49,6 @@ angular_velocity_min = 401.63
 angular_velocity_max = 401.63
 scale_amount_max = 4.0
 scale_amount_curve = SubResource("Curve_alq3v")
-
-[node name="lightSource" parent="." instance=ExtResource("3_x63ro")]
-position = Vector2(830, 362)
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_nvgnt")
