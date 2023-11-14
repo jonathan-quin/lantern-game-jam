@@ -20,6 +20,10 @@ func _process(delta):
 func _on_play_pressed():
 	ScreenTransition.change_scene(\"res://world.tscn\")
 	
+
+
+func _on_options_pressed():
+	ScreenTransition.change_scene(\"res://options_menu.tscn\")
 "
 
 [node name="menu" type="Control"]
@@ -65,3 +69,4 @@ layout_mode = 2
 text = "Quit"
 
 [connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="VBoxContainer/Options" to="." method="_on_options_pressed"]
