@@ -34,7 +34,7 @@ material = SubResource("ShaderMaterial_4udpr")
 script = ExtResource("2_84sop")
 
 [node name="player" parent="." instance=ExtResource("1_ovkyq")]
-position = Vector2(205, 448)
+position = Vector2(888, 255)
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="player"]
 modulate = Color(0, 0, 0, 1)

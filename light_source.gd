@@ -32,8 +32,8 @@ func _ready():
 func _process(delta):
 	if Engine.is_editor_hint(): #runs while editor is open.
 		
-		$fullyLit.scale = Vector2.ONE * fullLitRadius
-		$partialLit.scale = Vector2.ONE * (fullLitRadius + fallOffRadius)
+		$fullyLit.scale = Vector2.ONE * fullLitRadius * 2
+		$partialLit.scale = Vector2.ONE * (fullLitRadius + fallOffRadius) * 2
 		lightShader.material.set_shader_parameter( "fullyLitRange", fullLitRadius)
 		lightShader.material.set_shader_parameter( "falloffRange", fallOffRadius)
 		pass

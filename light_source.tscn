@@ -31,10 +31,12 @@ offset_bottom = 520.0
 
 [node name="fullyLit" type="MeshInstance2D" parent="."]
 modulate = Color(1, 1, 0.286275, 0.239216)
-scale = Vector2(10, 10)
+z_index = 10
+scale = Vector2(20, 20)
 mesh = SubResource("SphereMesh_0atdx")
 
 [node name="partialLit" type="MeshInstance2D" parent="."]
 modulate = Color(1, 1, 0.0980392, 0.101961)
-scale = Vector2(60, 60)
+z_index = 10
+scale = Vector2(120, 120)
 mesh = SubResource("SphereMesh_0atdx")

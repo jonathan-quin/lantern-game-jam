@@ -54,7 +54,11 @@ void fragment() {
 			float distanceToMid = lengthOfVec2(difference);// * 1.4142271f ;
 			//this distance is in pixels.
 			
+			/*float newVal = 1.0;
 			
+			if (distanceToMid > fullyLitRange){
+				newVal = 0.5;
+			}*/
 			
 			float entireRange = falloffRange + fullyLitRange;
 			float newVal = map(fullyLitRange,entireRange,1,0,distanceToMid);
@@ -66,11 +70,12 @@ void fragment() {
 				
 				COLOR = objects;
 			}
-			COLOR = vec4(newVal,newVal,newVal,1.0);
+			
+			/*COLOR = vec4(newVal,newVal,newVal,1.0);
 			
 			if (newVal < 1.0){
-				COLOR = vec4(newVal/0.5,newVal/0.5,newVal/0.5,1.0);
-			}
+				COLOR = vec4(newVal*0.5,newVal*0.5,newVal*0.5,1.0);
+			}*/
 			
 		} 
 	} 
