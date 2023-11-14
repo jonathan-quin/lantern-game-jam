@@ -26,6 +26,12 @@ const MAX_JUMPS = 2
 var gravity = 1000
 const COYOTE_TIME = 0.1
 
+func _ready():
+	
+	$lightAnimationPlayer.play("light_idle")
+	
+
+
 func _physics_process(delta):
 	
 	match  currentMoveState:
@@ -58,9 +64,11 @@ func _physics_process(delta):
 			var currentStopAccel = (GROUND_STOP_ACCEL if is_on_floor() else AIR_STOP_ACCEL) * delta
 			
 			if direction:
-				velocity.x = lerp(velocity.x,direction * SPEED,currentAccel)
+				velocity.x = lerp(velocity.x,-direction * SPEED,currentAccel)
 			else:
 				velocity.x = lerp(velocity.x,0.0,currentStopAccel)
+			
+			
 			
 		MOVE_STATES.LEFTWALLCLIMB or MOVE_STATES.RIGHTWALLCLIMB:
 			pass

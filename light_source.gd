@@ -7,7 +7,7 @@ extends Node2D
 @export var fallOffRadius = 50
 
 #1 being completely linear, 0 being instant
-@export var fallOffCurve = 1
+@export var fallOffCurve = 1.0
 
 var lightShader
 
@@ -36,11 +36,13 @@ func _process(delta):
 		$partialLit.scale = Vector2.ONE * (fullLitRadius + fallOffRadius) * 2
 		lightShader.material.set_shader_parameter( "fullyLitRange", fullLitRadius)
 		lightShader.material.set_shader_parameter( "falloffRange", fallOffRadius)
+		lightShader.material.set_shader_parameter( "falloffCurve", fallOffCurve)
 		pass
 	else:
 		setGlobalPosition(global_position)
 		lightShader.material.set_shader_parameter( "fullyLitRange", fullLitRadius)
 		lightShader.material.set_shader_parameter( "falloffRange", fallOffRadius)
+		lightShader.material.set_shader_parameter( "falloffCurve", fallOffCurve)
 		pass
 
 func setGlobalPosition(globalPos):
