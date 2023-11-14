@@ -1,5 +1,12 @@
+#@tool
+
 extends Node2D
 
+@export var fullLitRadius = 100
+@export var fallOffRadius = 50
+
+#1 being completely linear, 0 being instant
+@export var fallOffCurve = 1
 
 var lightShader
 
