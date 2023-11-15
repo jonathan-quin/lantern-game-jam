@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bj8xb7f8u0y33" path="res://light_source.tscn" id="3_lw75g"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0ryjh"]
+radius = 4.0
 height = 32.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xwe20"]
@@ -73,6 +74,33 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Animation" id="Animation_daje2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("invertableStuff/lightSource:fullLitRadius")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [30]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("invertableStuff/lightSource:fallOffRadius")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [60]
+}
+
 [sub_resource type="Animation" id="Animation_qxyaf"]
 resource_name = "light_idle"
 loop_mode = 1
@@ -101,33 +129,6 @@ tracks/1/keys = {
 "values": [30, 35]
 }
 
-[sub_resource type="Animation" id="Animation_daje2"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("invertableStuff/lightSource:fullLitRadius")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [30]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("invertableStuff/lightSource:fallOffRadius")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [60]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ypsbq"]
 _data = {
 "RESET": SubResource("Animation_daje2"),
@@ -141,6 +142,7 @@ script = ExtResource("1_aehhp")
 shape = SubResource("CapsuleShape2D_0ryjh")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
 sprite_frames = SubResource("SpriteFrames_pyvve")
 animation = &"wall slide"
 
@@ -153,7 +155,9 @@ fallOffRadius = 60
 fallOffCurve = 0.7
 
 [node name="Camera2D" type="Camera2D" parent="invertableStuff"]
-position = Vector2(13, -2)
+position = Vector2(11, 2)
+position_smoothing_enabled = true
+position_smoothing_speed = 15.0
 script = ExtResource("3_0tykd")
 
 [node name="coyoteTime" type="Timer" parent="."]
