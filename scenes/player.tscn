@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bwd8ys1cqiick"]
+[gd_scene load_steps=18 format=3 uid="uid://bwd8ys1cqiick"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_aehhp"]
 [ext_resource type="Texture2D" uid="uid://c2r0fhe3u40fy" path="res://jeremy spritesv1.png" id="2_yeex2"]
@@ -74,6 +74,10 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Curve" id="Curve_tv5ly"]
+_data = [Vector2(0.00886294, 0.976451), 0.0, 0.0, 0, 0, Vector2(0.787908, 1), 0.0, 0.0, 0, 0, Vector2(0.993129, 0.0288426), 0.0, 0.0, 0, 0]
+point_count = 3
+
 [sub_resource type="Animation" id="Animation_daje2"]
 length = 0.001
 tracks/0/type = "value"
@@ -129,9 +133,39 @@ tracks/1/keys = {
 "values": [30, 35]
 }
 
+[sub_resource type="Animation" id="Animation_6cqof"]
+resource_name = "light_flare"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("invertableStuff/lightSource:fullLitRadius")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.8, 1.1, 1.5, 1.8, 2.4, 2.7),
+"transitions": PackedFloat32Array(1, 1.02213, 1, 1.02213, 1, 1.02213, 1, 1.02213),
+"update": 0,
+"values": [45, 60, 40, 55, 45, 60, 35, 50]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("invertableStuff/lightSource:fallOffRadius")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.8, 1.1, 1.5, 1.8, 2.4, 2.7),
+"transitions": PackedFloat32Array(1, 1.05817, 1, 1.05817, 1, 1.05817, 1, 1.05817),
+"update": 0,
+"values": [45, 60, 40, 55, 45, 60, 35, 50]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ypsbq"]
 _data = {
 "RESET": SubResource("Animation_daje2"),
+"light_flare": SubResource("Animation_6cqof"),
 "light_idle": SubResource("Animation_qxyaf")
 }
 
@@ -149,16 +183,28 @@ animation = &"wall slide"
 [node name="invertableStuff" type="Node2D" parent="."]
 
 [node name="lightSource" parent="invertableStuff" instance=ExtResource("3_lw75g")]
-position = Vector2(13, -2)
+position = Vector2(6, 0)
 fullLitRadius = 30
 fallOffRadius = 60
 fallOffCurve = 0.7
 
 [node name="Camera2D" type="Camera2D" parent="invertableStuff"]
-position = Vector2(11, 2)
-position_smoothing_enabled = true
-position_smoothing_speed = 15.0
+position_smoothing_speed = 3.0
 script = ExtResource("3_0tykd")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="invertableStuff"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(13, -1)
+amount = 12
+lifetime = 0.6
+direction = Vector2(2.08165e-12, -1)
+gravity = Vector2(2.08165e-12, 30)
+initial_velocity_min = 40.0
+initial_velocity_max = 40.0
+angular_velocity_min = 401.63
+angular_velocity_max = 401.63
+scale_amount_max = 4.0
+scale_amount_curve = SubResource("Curve_tv5ly")
 
 [node name="coyoteTime" type="Timer" parent="."]
 wait_time = 0.1
@@ -168,5 +214,19 @@ one_shot = true
 libraries = {
 "": SubResource("AnimationLibrary_ypsbq")
 }
+
+[node name="wallChecks" type="Node2D" parent="."]
+
+[node name="touchingWall" type="RayCast2D" parent="wallChecks"]
+position = Vector2(-10, -10)
+target_position = Vector2(20, 0)
+collision_mask = 2
+hit_from_inside = true
+
+[node name="touchingFloor" type="RayCast2D" parent="wallChecks"]
+position = Vector2(0, 12)
+target_position = Vector2(0, 20)
+collision_mask = 2
+hit_from_inside = true
 
 [connection signal="timeout" from="coyoteTime" to="." method="_on_coyote_time_timeout"]

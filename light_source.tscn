@@ -1,15 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://bj8xb7f8u0y33"]
+[gd_scene load_steps=5 format=3 uid="uid://bj8xb7f8u0y33"]
 
 [ext_resource type="Script" path="res://light_source.gd" id="1_owo4o"]
 [ext_resource type="Shader" path="res://posableLightV2.gdshader" id="2_chrbr"]
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_45qx7"]
-frequency = 1.0
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_i5k0o"]
-width = 1024
-height = 1024
-noise = SubResource("FastNoiseLite_45qx7")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_laf5t"]
 resource_local_to_scene = true
@@ -20,9 +12,8 @@ shader_parameter/enabled = 0
 shader_parameter/fullyLitRange = null
 shader_parameter/falloffRange = null
 shader_parameter/falloffCurve = null
-shader_parameter/objects = Color(1, 0.796078, 0.227451, 1)
+shader_parameter/objects = Color(1, 1, 1, 1)
 shader_parameter/sourceObjects = Color(0, 0, 0, 1)
-shader_parameter/sourceNoise = SubResource("NoiseTexture2D_i5k0o")
 
 [sub_resource type="SphereMesh" id="SphereMesh_0atdx"]
 

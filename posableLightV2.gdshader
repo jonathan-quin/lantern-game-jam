@@ -15,7 +15,6 @@ uniform float falloffCurve : hint_range(0.0, 1.0);
 uniform vec4 objects : source_color = vec4(1.0);
 uniform vec4 sourceObjects : source_color = vec4(1.0);
 
-uniform sampler2D  sourceNoise;
 const float SCREEN_WIDTH = 512.0;
 const float SCREEN_HEIGHT = 288.0;
 
@@ -27,6 +26,12 @@ float fmod(float x, float y) {
 float random (vec2 uv) {
     return fract(sin(dot(uv.xy,
         vec2(12.9898,78.233) + vec2(fmod(TIME * 200.0,20),fmod(TIME,50)))) * (43758.5453123));
+}
+
+//between 0 and 1
+float random2 (vec2 uv) {
+    return fract(sin(dot(uv.xy,
+        vec2(12.9898,78.233) + vec2(fmod(TIME * 654.54,23.54),fmod(TIME*54.43,565.43)))) * (43758.5453123));
 }
 
 float lengthOfVec2 (vec2 vec){
@@ -43,12 +48,12 @@ void fragment() {
 		//pixels are transparent until they aren't
 		COLOR = vec4(0,0,0,0);
 		
+		vec2 difference = (vec2(0.5 * SCREEN_WIDTH,0.5 * SCREEN_HEIGHT) + vec2(posX,posY)) - (SCREEN_UV * vec2(SCREEN_WIDTH,SCREEN_HEIGHT));
+		float distanceToMid = lengthOfVec2(difference);
+		
 		if (ogColor == sourceObjects){
 			
-			vec2 difference = (vec2(0.5 * SCREEN_WIDTH,0.5 * SCREEN_HEIGHT) + vec2(posX,posY)) - (SCREEN_UV * vec2(SCREEN_WIDTH,SCREEN_HEIGHT));
 			
-			//this distance is in pixels. It is from the pixel to the center of the light source.
-			float distanceToMid = lengthOfVec2(difference);
 			
 			float entireRange = falloffRange + fullyLitRange;
 			float newVal = 0.0;
@@ -68,7 +73,18 @@ void fragment() {
 				
 				COLOR = objects;
 			}
-		} 
+		}/*else{
+			
+			float entireRange = falloffRange + fullyLitRange;
+			
+			float newVal = 1.0 - distanceToMid/entireRange;
+			newVal *= 0.03;
+			
+			if (distanceToMid < entireRange && random(UV) < newVal && random2(UV) < newVal){
+				COLOR = objects;
+			}
+		}*/
+		 
 	} 
 	// Place fragment code here.
 }
