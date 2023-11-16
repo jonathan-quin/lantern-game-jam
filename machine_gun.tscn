@@ -19,6 +19,7 @@ texture = ExtResource("1_fvwjm")
 [node name="range" type="RayCast2D" parent="."]
 position = Vector2(36, 1)
 target_position = Vector2(10000, 0)
+collision_mask = 4
 script = ExtResource("2_yu6xh")
 
 [node name="MachineStartUp" type="AudioStreamPlayer2D" parent="."]
@@ -28,7 +29,7 @@ stream = ExtResource("4_himbe")
 wait_time = 2.0
 
 [node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(58, 2)
+position = Vector2(55, 0)
 
 [node name="Fireing" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_2s3kn")

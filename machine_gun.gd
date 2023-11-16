@@ -66,4 +66,4 @@ func shoot(delta):
 	get_parent().add_child(bullet)
 	
 	bullet.position = $Marker2D.global_position
-	bullet.rotation = $Marker2D.global_rotation
+	bullet.rotation = $Marker2D.global_rotation + deg_to_rad(randf_range(-2,2))
