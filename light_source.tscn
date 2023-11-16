@@ -18,6 +18,7 @@ shader_parameter/sourceObjects = Color(0, 0, 0, 1)
 [sub_resource type="SphereMesh" id="SphereMesh_0atdx"]
 
 [node name="lightSource" type="Node2D"]
+process_mode = 3
 script = ExtResource("1_owo4o")
 fullLitRadius = 10
 fallOffCurve = 1

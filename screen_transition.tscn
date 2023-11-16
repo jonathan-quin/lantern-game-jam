@@ -1,6 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://wjna0imfja15"]
+[gd_scene load_steps=8 format=3 uid="uid://wjna0imfja15"]
 
 [ext_resource type="Script" path="res://ScreenTransition.gd" id="1_1dqs7"]
+[ext_resource type="Shader" path="res://circleCut.gdshader" id="2_4rbb8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_koujo"]
+shader = ExtResource("2_4rbb8")
+shader_parameter/value = -0.137
 
 [sub_resource type="Animation" id="Animation_6xbl7"]
 resource_name = "RESET"
@@ -17,9 +22,22 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../deathRect:material:shader_parameter/value")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.137]
+}
 
 [sub_resource type="Animation" id="Animation_i6c05"]
 resource_name = "dissolve"
+length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -33,13 +51,31 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_8oaul"]
+resource_name = "die_animation"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../deathRect:material:shader_parameter/value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-0.137, 0.808, 0.808]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qybxv"]
 _data = {
 "RESET": SubResource("Animation_6xbl7"),
+"die_animation": SubResource("Animation_8oaul"),
 "dissolve": SubResource("Animation_i6c05")
 }
 
 [node name="ScreenTransition" type="CanvasLayer"]
+process_mode = 3
 script = ExtResource("1_1dqs7")
 
 [node name="Dissolve_rect" type="ColorRect" parent="."]
@@ -52,6 +88,16 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
+
+[node name="deathRect" type="ColorRect" parent="."]
+z_index = 4096
+material = SubResource("ShaderMaterial_koujo")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Dissolve_rect")

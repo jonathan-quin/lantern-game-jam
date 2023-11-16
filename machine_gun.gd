@@ -54,7 +54,6 @@ var timeUntilNextShot = 0
 var fireRate = 15.0 # shots per second
 func shoot(delta):
 	
-	print(timeUntilNextShot)
 	
 	if timeUntilNextShot > 0:
 		timeUntilNextShot -= delta

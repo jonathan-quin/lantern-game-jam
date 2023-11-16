@@ -13,6 +13,10 @@ func _physics_process(delta):
 	
 	move_and_slide()
 	
-	if get_last_slide_collision() != null:
+	var lastCollision = get_last_slide_collision()
+	if lastCollision != null:
+		if lastCollision.get_collider().is_in_group("player"):
+			lastCollision.get_collider().takeDamage(50)
+		
 		queue_free()
 	

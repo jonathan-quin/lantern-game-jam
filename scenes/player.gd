@@ -60,6 +60,9 @@ func _ready():
 
 func _physics_process(delta):
 	
+	if Input.is_action_just_pressed("reload"):
+		ScreenTransition.playerDie()
+	
 	var direction = Input.get_axis("left", "right")
 	#Dani should lock their screen when they leave their laptop.
 	
@@ -157,6 +160,14 @@ func setFlipH(flipH):
 		child.position.x = abs(child.position.x )* value
 		print(flipH)
 		print(child)
+	
+
+var health = 100
+func takeDamage(amount):
+	health -= amount
+	
+	if health <= 0:
+		ScreenTransition.playerDie()
 	
 
 func _on_coyote_time_timeout():

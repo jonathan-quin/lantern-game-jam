@@ -14,14 +14,15 @@ var lightShader
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	lightShader = $lightShader
-	
+	setGlobalPosition(global_position)
+	lightShader.material.set_shader_parameter( "enabled", 0)
 	#if the script is not running in the editor
 	if not Engine.is_editor_hint():
-		lightShader.material.set_shader_parameter( "enabled", 1)
+		
 		$fullyLit.visible = false
 		$partialLit.visible = false
 	else: #if we are in the editor
-		lightShader.material.set_shader_parameter( "enabled", 0)
+		
 		$fullyLit.visible = true
 		$partialLit.visible = true
 	
@@ -40,6 +41,7 @@ func _process(delta):
 		pass
 	else:
 		setGlobalPosition(global_position)
+		lightShader.material.set_shader_parameter( "enabled", 1)
 		lightShader.material.set_shader_parameter( "fullyLitRange", fullLitRadius)
 		lightShader.material.set_shader_parameter( "falloffRange", fallOffRadius)
 		lightShader.material.set_shader_parameter( "falloffCurve", fallOffCurve)
