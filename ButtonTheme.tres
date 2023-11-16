@@ -1,0 +1,16 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://p1gwrr6du6ai"]
+
+[ext_resource type="FontFile" uid="uid://dx63fkyitna6" path="res://upheavtt.ttf" id="1_kfwvl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vm6bt"]
+bg_color = Color(1, 1, 1, 1)
+
+[resource]
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/colors/font_focus_color = Color(1, 1, 1, 1)
+Button/colors/font_hover_color = Color(1, 1, 1, 1)
+Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/font_sizes/font_size = 24
+Button/fonts/font = ExtResource("1_kfwvl")
+Button/styles/normal = SubResource("StyleBoxFlat_vm6bt")
