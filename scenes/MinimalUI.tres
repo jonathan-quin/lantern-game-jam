@@ -1,6 +1,8 @@
-[gd_resource type="Theme" load_steps=50 format=3 uid="uid://dhx37b84gxr0e"]
+[gd_resource type="Theme" load_steps=51 format=3 uid="uid://dhx37b84gxr0e"]
 
 [ext_resource type="FontFile" uid="uid://dx63fkyitna6" path="res://upheavtt.ttf" id="1_84xt6"]
+[ext_resource type="Texture2D" uid="uid://nhvk8ua4cu62" path="res://Check_True.png" id="2_127nx"]
+[ext_resource type="Texture2D" uid="uid://cniq0x75eu6hm" path="res://Check_False.png" id="3_bmxl5"]
 
 [sub_resource type="StyleBoxFlat" id="1"]
 bg_color = Color(0, 0, 0, 1)
@@ -32,28 +34,18 @@ border_width_right = 1
 border_width_bottom = 1
 border_color = Color(1, 1, 1, 1)
 
-[sub_resource type="AtlasTexture" id="22"]
-region = Rect2(37, 111, 18, 18)
-
 [sub_resource type="AtlasTexture" id="23"]
 region = Rect2(85, 111, 18, 18)
 
 [sub_resource type="AtlasTexture" id="24"]
 region = Rect2(61, 111, 18, 18)
 
-[sub_resource type="AtlasTexture" id="25"]
-region = Rect2(13, 111, 18, 18)
-
 [sub_resource type="StyleBoxEmpty" id="26"]
 
-[sub_resource type="AtlasTexture" id="5"]
-region = Rect2(13, 79, 34, 19)
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_i1wxj"]
 
 [sub_resource type="AtlasTexture" id="6"]
 region = Rect2(93, 79, 34, 19)
-
-[sub_resource type="AtlasTexture" id="7"]
-region = Rect2(53, 79, 34, 19)
 
 [sub_resource type="AtlasTexture" id="8"]
 region = Rect2(133, 79, 34, 19)
@@ -165,6 +157,12 @@ border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0.282353, 0.282353, 0.282353, 1)
+
+[sub_resource type="AtlasTexture" id="22"]
+region = Rect2(37, 111, 18, 18)
+
+[sub_resource type="AtlasTexture" id="25"]
+region = Rect2(13, 111, 18, 18)
 
 [sub_resource type="StyleBoxFlat" id="30"]
 bg_color = Color(0.282353, 0.282353, 0.282353, 1)
@@ -336,10 +334,10 @@ CheckBox/colors/font_color_pressed = Color(1, 1, 1, 1)
 CheckBox/constants/check_vadjust = 0
 CheckBox/constants/hseparation = 4
 CheckBox/fonts/font = ExtResource("1_84xt6")
-CheckBox/icons/checked = SubResource("22")
+CheckBox/icons/checked = ExtResource("2_127nx")
 CheckBox/icons/radio_checked = SubResource("23")
 CheckBox/icons/radio_unchecked = SubResource("24")
-CheckBox/icons/unchecked = SubResource("25")
+CheckBox/icons/unchecked = ExtResource("3_bmxl5")
 CheckBox/styles/disabled = SubResource("26")
 CheckBox/styles/focus = null
 CheckBox/styles/hover = SubResource("26")
@@ -354,9 +352,11 @@ CheckButton/colors/font_color_pressed = Color(1, 1, 1, 1)
 CheckButton/constants/check_vadjust = 0
 CheckButton/constants/hseparation = 4
 CheckButton/fonts/font = ExtResource("1_84xt6")
-CheckButton/icons/off = SubResource("5")
+CheckButton/icons/checked = SubResource("CompressedTexture2D_i1wxj")
+CheckButton/icons/checked_mirrored = SubResource("CompressedTexture2D_i1wxj")
+CheckButton/icons/off = SubResource("CompressedTexture2D_i1wxj")
 CheckButton/icons/off_disabled = SubResource("6")
-CheckButton/icons/on = SubResource("7")
+CheckButton/icons/on = SubResource("CompressedTexture2D_i1wxj")
 CheckButton/icons/on_disabled = SubResource("8")
 CheckButton/styles/disabled = SubResource("49")
 CheckButton/styles/focus = null

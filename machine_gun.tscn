@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://c0dm0h8aotv3j"]
+
+[ext_resource type="Script" path="res://machine_gun.gd" id="1_e6q5c"]
+[ext_resource type="Texture2D" uid="uid://ftrmyyoox3pp" path="res://ThisIsntSuspitiouse.png" id="1_fvwjm"]
+[ext_resource type="Script" path="res://MachineGunRayCast2d.gd" id="2_yu6xh"]
+[ext_resource type="AudioStream" uid="uid://d3vd4rrbv6elf" path="res://tractor-start-80168.mp3" id="4_himbe"]
+[ext_resource type="AudioStream" uid="uid://mdx3osp1iqqd" path="res://fluttering-100961.mp3" id="5_2s3kn"]
+
+[node name="MachineGun" type="Node2D"]
+script = ExtResource("1_e6q5c")
+
+[node name="ThisIsntSuspitiouse" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(2, 6)
+rotation = 0.166188
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_fvwjm")
+
+[node name="range" type="RayCast2D" parent="."]
+position = Vector2(36, 1)
+target_position = Vector2(10000, 0)
+script = ExtResource("2_yu6xh")
+
+[node name="MachineStartUp" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_himbe")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(58, 2)
+
+[node name="Fireing" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_2s3kn")
+autoplay = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

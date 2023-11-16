@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://b2aqrv06xidli"]
+[gd_scene load_steps=9 format=3 uid="uid://b2aqrv06xidli"]
 
 [ext_resource type="PackedScene" uid="uid://bwd8ys1cqiick" path="res://scenes/player.tscn" id="1_ovkyq"]
 [ext_resource type="Texture2D" uid="uid://dvt06b5lrnndp" path="res://textures/icon.svg" id="2_mjcrr"]
 [ext_resource type="Shader" path="res://scenes/light.gdshader" id="3_xkn15"]
+[ext_resource type="PackedScene" uid="uid://c0dm0h8aotv3j" path="res://machine_gun.tscn" id="4_4a5jj"]
 
 [sub_resource type="Curve" id="Curve_alq3v"]
 _data = [Vector2(0.00886294, 0.976451), 0.0, 0.0, 0, 0, Vector2(0.787908, 1), 0.0, 0.0, 0, 0, Vector2(0.993129, 0.0288426), 0.0, 0.0, 0, 0]
@@ -66,3 +67,11 @@ offset_left = -215.0
 offset_top = -787.0
 offset_right = 1785.0
 offset_bottom = 1213.0
+
+[node name="MachineGun" parent="." instance=ExtResource("4_4a5jj")]
+position = Vector2(339, 457)
+rotation = -1.26218
+
+[node name="MachineGun2" parent="." instance=ExtResource("4_4a5jj")]
+position = Vector2(355, 518)
+rotation = 0.221218
