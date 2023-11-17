@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://spike_trap.gd" id="1_uyb8n"]
 [ext_resource type="Texture2D" uid="uid://b1g6xsge0k22n" path="res://WaitingSpikes.png" id="2_csj1e"]
-[ext_resource type="Texture2D" uid="uid://bcx5hkapglpc8" path="res://ExtendedSpikes.png" id="3_7ukr5"]
+[ext_resource type="Texture2D" uid="uid://bcx5hkapglpc8" path="res://textures/ExtendedSpikes.png" id="3_7ukr5"]
 [ext_resource type="AudioStream" uid="uid://ct3ujnu324vxb" path="res://SpikeTrapExtendingSound.mp3" id="4_icu8q"]
 [ext_resource type="AudioStream" uid="uid://digl7fw5d6y0t" path="res://RetractingSpikeTrapSound.mp3" id="5_h4gcm"]
 

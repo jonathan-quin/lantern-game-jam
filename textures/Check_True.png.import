@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://skgiuo3hacm7"
-path="res://.godot/imported/jeremySpritesFinal.png-8a9b81d458e0aebdacdf20cea156e3b6.ctex"
+uid="uid://nhvk8ua4cu62"
+path="res://.godot/imported/Check_True.png-2f8b965c303a790683105cbb8e0408de.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://jeremySpritesFinal.png"
-dest_files=["res://.godot/imported/jeremySpritesFinal.png-8a9b81d458e0aebdacdf20cea156e3b6.ctex"]
+source_file="res://textures/Check_True.png"
+dest_files=["res://.godot/imported/Check_True.png-2f8b965c303a790683105cbb8e0408de.ctex"]
 
 [params]
 

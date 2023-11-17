@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://1ttx2dvktbqu"
-path="res://.godot/imported/knife.webp-37afc2dc5c91669965de946135023c5d.ctex"
+uid="uid://0ehc3nvx2igj"
+path="res://.godot/imported/spike.png-802635bcff22a13b6c60c111b8f6e3f9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://knife.webp"
-dest_files=["res://.godot/imported/knife.webp-37afc2dc5c91669965de946135023c5d.ctex"]
+source_file="res://textures/spike.png"
+dest_files=["res://.godot/imported/spike.png-802635bcff22a13b6c60c111b8f6e3f9.ctex"]
 
 [params]
 
