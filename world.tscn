@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bwd8ys1cqiick" path="res://scenes/player.tscn" id="1_ovkyq"]
 [ext_resource type="Shader" path="res://setColorShader.gdshader" id="1_swem1"]
 [ext_resource type="Script" path="res://world.gd" id="2_84sop"]
-[ext_resource type="PackedScene" uid="uid://bj8xb7f8u0y33" path="res://light_source.tscn" id="3_x63ro"]
+[ext_resource type="PackedScene" path="res://light_source.tscn" id="3_x63ro"]
 [ext_resource type="PackedScene" uid="uid://c0dm0h8aotv3j" path="res://machine_gun.tscn" id="4_yl6e8"]
 [ext_resource type="Texture2D" uid="uid://c1wn3hf8ekejb" path="res://textures/blackandwhitetilesetstart.png" id="5_jwqbk"]
 [ext_resource type="Shader" path="res://dither.gdshader" id="6_uaw68"]
