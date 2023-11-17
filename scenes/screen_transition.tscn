@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://wjna0imfja15"]
+[gd_scene load_steps=8 format=3 uid="uid://cit2e8kj26yq2"]
 
 [ext_resource type="Script" path="res://ScreenTransition.gd" id="1_1dqs7"]
 [ext_resource type="Shader" path="res://circleCut.gdshader" id="2_4rbb8"]
