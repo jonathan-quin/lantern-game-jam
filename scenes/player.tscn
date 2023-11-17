@@ -12,12 +12,12 @@ height = 32.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4e8f0"]
 shader = ExtResource("2_bryvo")
-shader_parameter/enabled = null
-shader_parameter/leftArmBoneColor = Color(1, 1, 1, 1)
-shader_parameter/leftArmColor = Color(1, 0.678431, 0, 1)
-shader_parameter/rightArm = Color(1, 1, 1, 1)
-shader_parameter/leftLeg = Color(1, 1, 1, 1)
-shader_parameter/rightLeg = Color(1, 1, 1, 1)
+shader_parameter/progress = null
+shader_parameter/leftArmBoneColor = Color(1, 0.678431, 0, 1)
+shader_parameter/leftArmColor = Color(1, 0, 0, 1)
+shader_parameter/rightArm = Color(0, 0.992157, 1, 1)
+shader_parameter/leftLeg = Color(0.0470588, 1, 0, 1)
+shader_parameter/rightLeg = Color(0.945098, 0, 1, 1)
 shader_parameter/transParent = Vector4(0, 0, 0, 0)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ql6su"]

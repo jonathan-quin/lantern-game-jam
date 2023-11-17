@@ -1,7 +1,7 @@
 shader_type canvas_item;
 
 
-uniform int enabled : hint_range(0,1,1);
+uniform int progress : hint_range(0,1,1);
 
 uniform vec4 leftArmBoneColor : source_color = vec4(1.0);
 uniform vec4 leftArmColor : source_color = vec4(1.0);
