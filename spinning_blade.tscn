@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://b147phfyv6507"]
+[gd_scene load_steps=5 format=3 uid="uid://bhe2juy2506cm"]
 
 [ext_resource type="Texture2D" uid="uid://ilqh0uwjhyl" path="res://SpikeThingSpin.png" id="1_7yiyj"]
 [ext_resource type="Script" path="res://spinning_blade.gd" id="1_au6fk"]
@@ -15,7 +15,7 @@ startingRot = -180.0
 bladeSizeModifier = 3
 
 [node name="rotatable" type="Node2D" parent="."]
-rotation = 3.58344
+rotation = 26.7348
 
 [node name="SpikeBall" type="Sprite2D" parent="rotatable"]
 visible = false
@@ -25,8 +25,9 @@ texture = ExtResource("1_7yiyj")
 
 [node name="BigSawblade" type="Sprite2D" parent="rotatable"]
 modulate = Color(0, 0, 0, 1)
+self_modulate = Color(0, 0, 0, 1)
 position = Vector2(100, 0)
-rotation = 3811.8
+rotation = 317.664
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("3_4hon5")
 offset = Vector2(5, 0)
