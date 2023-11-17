@@ -1,43 +1,54 @@
-[gd_scene load_steps=19 format=3 uid="uid://bwd8ys1cqiick"]
+[gd_scene load_steps=21 format=3 uid="uid://bwd8ys1cqiick"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_aehhp"]
-[ext_resource type="Texture2D" uid="uid://c2r0fhe3u40fy" path="res://jeremy spritesv1.png" id="2_yeex2"]
+[ext_resource type="Shader" path="res://scenes/colorRemovalShader.gdshader" id="2_bryvo"]
 [ext_resource type="Script" path="res://scenes/GameCamera.gd" id="3_0tykd"]
 [ext_resource type="PackedScene" uid="uid://bj8xb7f8u0y33" path="res://light_source.tscn" id="3_lw75g"]
+[ext_resource type="Texture2D" uid="uid://skgiuo3hacm7" path="res://jeremySpritesFinal.png" id="3_tmnlt"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0ryjh"]
 radius = 4.0
 height = 32.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xwe20"]
-atlas = ExtResource("2_yeex2")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4e8f0"]
+shader = ExtResource("2_bryvo")
+shader_parameter/enabled = null
+shader_parameter/leftArmBoneColor = Color(1, 1, 1, 1)
+shader_parameter/leftArmColor = Color(1, 0.678431, 0, 1)
+shader_parameter/rightArm = Color(1, 1, 1, 1)
+shader_parameter/leftLeg = Color(1, 1, 1, 1)
+shader_parameter/rightLeg = Color(1, 1, 1, 1)
+shader_parameter/transParent = Vector4(0, 0, 0, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ql6su"]
+atlas = ExtResource("3_tmnlt")
 region = Rect2(32, 64, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_nrgc7"]
-atlas = ExtResource("2_yeex2")
+[sub_resource type="AtlasTexture" id="AtlasTexture_fbacg"]
+atlas = ExtResource("3_tmnlt")
 region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ss4tj"]
-atlas = ExtResource("2_yeex2")
+[sub_resource type="AtlasTexture" id="AtlasTexture_fris8"]
+atlas = ExtResource("3_tmnlt")
 region = Rect2(32, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_a6d16"]
-atlas = ExtResource("2_yeex2")
+[sub_resource type="AtlasTexture" id="AtlasTexture_7gqnh"]
+atlas = ExtResource("3_tmnlt")
 region = Rect2(0, 32, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tu24r"]
-atlas = ExtResource("2_yeex2")
+[sub_resource type="AtlasTexture" id="AtlasTexture_5tg3m"]
+atlas = ExtResource("3_tmnlt")
 region = Rect2(32, 32, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_iny4u"]
-atlas = ExtResource("2_yeex2")
+[sub_resource type="AtlasTexture" id="AtlasTexture_ck8uf"]
+atlas = ExtResource("3_tmnlt")
 region = Rect2(0, 64, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_pyvve"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xwe20")
+"texture": SubResource("AtlasTexture_ql6su")
 }],
 "loop": true,
 "name": &"dash",
@@ -45,10 +56,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_nrgc7")
+"texture": SubResource("AtlasTexture_fbacg")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ss4tj")
+"texture": SubResource("AtlasTexture_fris8")
 }],
 "loop": true,
 "name": &"idle",
@@ -56,10 +67,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_a6d16")
+"texture": SubResource("AtlasTexture_7gqnh")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_tu24r")
+"texture": SubResource("AtlasTexture_5tg3m")
 }],
 "loop": true,
 "name": &"run",
@@ -67,7 +78,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_iny4u")
+"texture": SubResource("AtlasTexture_ck8uf")
 }],
 "loop": true,
 "name": &"wall slide",
@@ -103,6 +114,34 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [60]
+}
+
+[sub_resource type="Animation" id="Animation_4wi3j"]
+resource_name = "fizzle"
+length = 1.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("invertableStuff/lightSource:fullLitRadius")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 1),
+"transitions": PackedFloat32Array(1, 1.02213, 1),
+"update": 0,
+"values": [30, 35, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("invertableStuff/lightSource:fallOffRadius")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 1),
+"transitions": PackedFloat32Array(1, 1.05817, 1),
+"update": 0,
+"values": [30, 35, 0]
 }
 
 [sub_resource type="Animation" id="Animation_6cqof"]
@@ -162,34 +201,6 @@ tracks/1/keys = {
 "values": [30, 35]
 }
 
-[sub_resource type="Animation" id="Animation_4wi3j"]
-resource_name = "fizzle"
-length = 1.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("invertableStuff/lightSource:fullLitRadius")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 1),
-"transitions": PackedFloat32Array(1, 1.02213, 1),
-"update": 0,
-"values": [30, 35, 0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("invertableStuff/lightSource:fallOffRadius")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3, 1),
-"transitions": PackedFloat32Array(1, 1.05817, 1),
-"update": 0,
-"values": [30, 35, 0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ypsbq"]
 _data = {
 "RESET": SubResource("Animation_daje2"),
@@ -207,11 +218,12 @@ script = ExtResource("1_aehhp")
 shape = SubResource("CapsuleShape2D_0ryjh")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-modulate = Color(0, 0, 0, 1)
+material = SubResource("ShaderMaterial_4e8f0")
 sprite_frames = SubResource("SpriteFrames_pyvve")
-animation = &"wall slide"
+animation = &"dash"
 
 [node name="invertableStuff" type="Node2D" parent="."]
+visible = false
 
 [node name="lightSource" parent="invertableStuff" instance=ExtResource("3_lw75g")]
 position = Vector2(6, 0)
@@ -247,6 +259,7 @@ libraries = {
 }
 
 [node name="wallChecks" type="Node2D" parent="."]
+visible = false
 
 [node name="touchingWall" type="RayCast2D" parent="wallChecks"]
 position = Vector2(-10, -10)

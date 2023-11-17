@@ -46,7 +46,7 @@ var lanternLit:
 	get:
 		return lanternLitField
 	set(value):
-		if lanternLit != value:
+		if lanternLit != value and !dead:
 			if !value:
 				$lightAnimationPlayer.play("light_idle")
 			else:
@@ -69,19 +69,19 @@ func _physics_process(delta):
 	var direction = Input.get_axis("left", "right")
 	#Dani should lock their screen when they leave their laptop.
 	
-	lanternLit = Input.is_action_pressed("lightLantern")
+	lanternLit = !dead and Input.is_action_pressed("lightLantern")
 	
 	if lanternLit:
-		lanternLightLeft -= delta * 50 #you start with 100 and lose 5 a second, you can be lit for 20.
+		lanternLightLeft -= delta * 10 #you start with 100 and lose 5 a second, you can be lit for 20.
 		
 	
-	if lanternLightLeft <= 0:
+	if lanternLightLeft <= 0 and !dead:
 		dead = true
+		$lightAnimationPlayer.play("fizzle")
 	
 	if dead:
-		if $lightAnimationPlayer.current_animation != StringName("fizzle"):
-			$lightAnimationPlayer.play("fizzle")
-		elif !$lightAnimationPlayer.is_playing():
+		
+		if !$lightAnimationPlayer.is_playing():
 			
 			ScreenTransition.playerDie()
 		
@@ -90,6 +90,8 @@ func _physics_process(delta):
 		if not is_on_floor():
 			velocity.y += gravity * delta
 		move_and_slide()
+		
+		return
 	
 	if currentMoveState == MOVE_STATES.WALK:
 		
@@ -185,8 +187,6 @@ func setFlipH(flipH):
 	var value = -1 if flipH else 1
 	for child in $invertableStuff.get_children():
 		child.position.x = abs(child.position.x )* value
-		print(flipH)
-		print(child)
 	
 
 var health = 100
