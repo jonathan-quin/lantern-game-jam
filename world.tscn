@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b2aqrv06xidli"]
+[gd_scene load_steps=17 format=3 uid="uid://b2aqrv06xidli"]
 
 [ext_resource type="PackedScene" uid="uid://bwd8ys1cqiick" path="res://scenes/player.tscn" id="1_ovkyq"]
 [ext_resource type="Shader" path="res://setColorShader.gdshader" id="1_swem1"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://c1bcf56dtjncl" path="res://textures/bettertreething.png" id="6_ygkuc"]
 [ext_resource type="Script" path="res://shaderBackground.gd" id="7_weqqy"]
 [ext_resource type="Texture2D" uid="uid://bc76u784icnh5" path="res://textures/1200px-Acadia_tree.png" id="8_p4u2o"]
+[ext_resource type="PackedScene" uid="uid://b147phfyv6507" path="res://spinning_blade.tscn" id="11_2mrue"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4udpr"]
 shader = ExtResource("1_swem1")
@@ -202,6 +203,7 @@ position = Vector2(877, 772)
 fallOffCurve = 0.5
 
 [node name="shaderBackground" type="ColorRect" parent="."]
+visible = false
 z_index = 200
 material = SubResource("ShaderMaterial_pyoo7")
 offset_left = -1137.0
@@ -245,3 +247,8 @@ position = Vector2(1188, 822)
 rotation = -0.153007
 scale = Vector2(0.221164, 0.221164)
 texture = ExtResource("8_p4u2o")
+
+[node name="SpinningBlade" parent="." instance=ExtResource("11_2mrue")]
+position = Vector2(719, 870)
+rpm = null
+bladeSizeModifier = null

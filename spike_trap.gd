@@ -2,7 +2,7 @@ extends Node2D
 
 @export var timeIn = 0.1;
 @export var timeOut = 0.3;
-@export var timeOffset = 0;
+@export var timeOffset = 1;
 
 var waiting = load("res://WaitingSpikes.png")
 var extended = load("res://ExtendedSpikes.png")
@@ -21,20 +21,22 @@ func _ready():
 func _process(delta):
 	if $Offset.is_stopped():
 		if $WaitingSpikes.texture.current_frame == 0:
-		
 			for body in $damageArea.get_overlapping_bodies():
 				if body.is_in_group("player"):
 					body.takeDamage(100)
-		
 	
+	var startingVal = $damageArea/CollisionShape2D.disabled
+	$damageArea/CollisionShape2D.disabled = $WaitingSpikes.texture.current_frame == 0
+	if $damageArea/CollisionShape2D.disabled != startingVal and $WaitingSpikes.texture.speed_scale == 1:
+		if $WaitingSpikes.texture.current_frame == 0:
+			$SpikeTrapExtendingSound.play()
+		else: 
+			$SpikeTrapRetreatingSound.play()
 	
 	pass
 
 
-func _on_waiting_spikes_frame_changed():
-	
-	$damageArea/CollisionShape2D.enabled = $WaitingSpikes.texture.current_frame
-	pass # Replace with function body.
+
 
 
 func _on_offset_timeout():
