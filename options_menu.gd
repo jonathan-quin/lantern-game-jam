@@ -13,5 +13,8 @@ func _process(delta):
 
 
 
-func _on_button_pressed():
+
+
+func _on_back_pressed():
+	ScreenTransition.change_scene("res://menu.tscn")
 	pass # Replace with function body.
