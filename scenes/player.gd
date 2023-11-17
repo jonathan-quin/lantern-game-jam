@@ -7,6 +7,11 @@ const WALLJUMP_JUMP_FORCE = -350
 const WALLJUMP_HORIZONTAL_FORCE = 300
 const WALLCLIMB_GRAVITY = 350
 
+const DASH_SPEED = 700
+const DASH_DISTANCE = 400
+const DASH_COOLDOWN = 0.1
+var canDash = false
+var dashDir = 1 #always 1 or -1
 
 
 var currentMoveStateField = MOVE_STATES.WALK
@@ -63,13 +68,19 @@ func _ready():
 
 func _physics_process(delta):
 	
+	$AnimatedSprite2D.material.set_shader_parameter( "progress", Globals.playerHurtProgress)
+	
 	if Input.is_action_just_pressed("reload"):
 		ScreenTransition.playerDie()
 	
-	var direction = Input.get_axis("left", "right")
+	
 	#Dani should lock their screen when they leave their laptop.
 	
 	lanternLit = !dead and Input.is_action_pressed("lightLantern")
+	
+	var particlesAmount = int(lanternLightLeft/4.0) + 1
+	if $invertableStuff/CPUParticles2D.amount != particlesAmount:
+		$invertableStuff/CPUParticles2D.amount = particlesAmount
 	
 	if lanternLit:
 		lanternLightLeft -= delta * 10 #you start with 100 and lose 5 a second, you can be lit for 20.
@@ -84,18 +95,22 @@ func _physics_process(delta):
 		if !$lightAnimationPlayer.is_playing():
 			
 			ScreenTransition.playerDie()
-		
-		
-		
+			
 		if not is_on_floor():
 			velocity.y += gravity * delta
 		move_and_slide()
 		
 		return
 	
+	handleMovement(delta)
+	
+	move_and_slide()
+	
+
+func handleMovement(delta):
+	
+	var direction = Input.get_axis("left", "right")
 	if currentMoveState == MOVE_STATES.WALK:
-		
-		
 		# Add the gravity.
 		if not is_on_floor():
 			velocity.y += gravity * delta
@@ -176,10 +191,21 @@ func _physics_process(delta):
 				canJump = false
 		
 		pass
-	
-	
-	move_and_slide()
-	
+	elif currentMoveState == MOVE_STATES.DASH:
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		pass
+
+
 
 func setFlipH(flipH):
 	$AnimatedSprite2D.flip_h = flipH

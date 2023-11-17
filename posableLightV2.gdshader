@@ -73,7 +73,7 @@ void fragment() {
 				
 				COLOR = objects;
 			}
-		}/*else{
+		}else{
 			
 			float entireRange = falloffRange + fullyLitRange;
 			
@@ -83,7 +83,7 @@ void fragment() {
 			if (distanceToMid < entireRange && random(UV) < newVal && random2(UV) < newVal){
 				COLOR = objects;
 			}
-		}*/
+		}
 		 
 	} 
 	// Place fragment code here.
