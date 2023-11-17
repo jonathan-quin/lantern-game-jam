@@ -19,7 +19,7 @@ func _process(delta):
 	if state == GUN_STATES.WAITING:
 		$Fireing.stop()
 		
-		if range.is_colliding() and $Timer.is_stopped():
+		if range.is_colliding() and !$losCheck.is_colliding() and $Timer.is_stopped():
 			$Timer.start(2)
 			$MachineStartUp.play()
 			state = GUN_STATES.REVVING
@@ -30,14 +30,22 @@ func _process(delta):
 			$MachineStartUp.stop()
 			$Timer.start(5)
 		
-		
-		
 		shoot(delta)
 		#code for creating the bullets
 		
 		pass
 	
+	
+	updateLos()
+	
+	
 
+
+func updateLos():
+	$losCheck.global_rotation = 0
+	$losCheck.target_position = Globals.cameraPosition - $losCheck.global_position
+	
+	
 
 func _on_timer_timeout():
 	if state == GUN_STATES.REVVING:
@@ -53,7 +61,6 @@ func _on_timer_timeout():
 var timeUntilNextShot = 0
 var fireRate = 15.0 # shots per second
 func shoot(delta):
-	
 	
 	if timeUntilNextShot > 0:
 		timeUntilNextShot -= delta

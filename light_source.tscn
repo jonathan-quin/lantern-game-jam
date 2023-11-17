@@ -12,7 +12,7 @@ shader_parameter/enabled = 0
 shader_parameter/fullyLitRange = null
 shader_parameter/falloffRange = null
 shader_parameter/falloffCurve = null
-shader_parameter/objects = Color(1, 1, 1, 1)
+shader_parameter/objects = Color(1, 0.505882, 1, 1)
 shader_parameter/sourceObjects = Color(0, 0, 0, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_0atdx"]

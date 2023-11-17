@@ -4,7 +4,7 @@
 [ext_resource type="Shader" path="res://setColorShader.gdshader" id="1_swem1"]
 [ext_resource type="Script" path="res://world.gd" id="2_84sop"]
 [ext_resource type="PackedScene" uid="uid://bj8xb7f8u0y33" path="res://light_source.tscn" id="3_x63ro"]
-[ext_resource type="PackedScene" uid="uid://c0dm0h8aotv3j" path="res://machine_gun.tscn" id="4_yl6e8"]
+[ext_resource type="PackedScene" uid="uid://c2ywewdosqr7" path="res://machine_gun.tscn" id="4_yl6e8"]
 [ext_resource type="Texture2D" uid="uid://c1wn3hf8ekejb" path="res://textures/blackandwhitetilesetstart.png" id="5_jwqbk"]
 [ext_resource type="Shader" path="res://dither.gdshader" id="6_uaw68"]
 [ext_resource type="Texture2D" uid="uid://c1bcf56dtjncl" path="res://textures/bettertreething.png" id="6_ygkuc"]
@@ -176,7 +176,7 @@ sources/1 = SubResource("TileSetAtlasSource_wh7ae")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pyoo7"]
 shader = ExtResource("1_swem1")
-shader_parameter/background = Color(0, 0, 0, 1)
+shader_parameter/background = Color(0, 0, 0.486275, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5dgw7"]
 shader = ExtResource("6_uaw68")
@@ -191,6 +191,10 @@ position = Vector2(781, 897)
 [node name="MachineGun" parent="." instance=ExtResource("4_yl6e8")]
 position = Vector2(359, 861)
 
+[node name="MachineGun2" parent="." instance=ExtResource("4_yl6e8")]
+position = Vector2(392, 739)
+rotation = 0.717808
+
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(131, 17)
 tile_set = SubResource("TileSet_nvgnt")
@@ -202,6 +206,7 @@ position = Vector2(877, 772)
 fallOffCurve = 0.5
 
 [node name="shaderBackground" type="ColorRect" parent="."]
+visible = false
 z_index = 200
 material = SubResource("ShaderMaterial_pyoo7")
 offset_left = -1137.0
@@ -222,10 +227,9 @@ offset_bottom = 1980.0
 material = SubResource("ShaderMaterial_5dgw7")
 
 [node name="Bettertreething" type="Sprite2D" parent="background"]
-modulate = Color(0, 0, 0, 1)
 z_index = -1
 use_parent_material = true
-position = Vector2(877, 772)
+position = Vector2(878, 772)
 rotation = -0.280523
 scale = Vector2(0.376227, 0.416149)
 texture = ExtResource("6_ygkuc")

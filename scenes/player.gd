@@ -25,6 +25,7 @@ const GROUND_STOP_ACCEL = 9
 const AIR_STOP_ACCEL = 6
 
 const JUMP_FORCE = -300.0
+const DOUBLE_JUMP_FORCE = - 250
 const BRIGHT_JUMP_FORCE = -450.0
 
 #indicates if the play is allowed to jump
@@ -38,6 +39,8 @@ var gravity = 1000
 const COYOTE_TIME = 0.1
 
 
+var lanternLightLeft = 100
+var dead = false
 var lanternLitField = false
 var lanternLit: 
 	get:
@@ -68,6 +71,26 @@ func _physics_process(delta):
 	
 	lanternLit = Input.is_action_pressed("lightLantern")
 	
+	if lanternLit:
+		lanternLightLeft -= delta * 50 #you start with 100 and lose 5 a second, you can be lit for 20.
+		
+	
+	if lanternLightLeft <= 0:
+		dead = true
+	
+	if dead:
+		if $lightAnimationPlayer.current_animation != StringName("fizzle"):
+			$lightAnimationPlayer.play("fizzle")
+		elif !$lightAnimationPlayer.is_playing():
+			
+			ScreenTransition.playerDie()
+		
+		
+		
+		if not is_on_floor():
+			velocity.y += gravity * delta
+		move_and_slide()
+	
 	if currentMoveState == MOVE_STATES.WALK:
 		
 		
@@ -85,7 +108,11 @@ func _physics_process(delta):
 		
 		# Handle Jump.
 		if Input.is_action_just_pressed("up") and canJump:
-			velocity.y = BRIGHT_JUMP_FORCE if lanternLit else JUMP_FORCE
+			if remainingJumps == 2:
+				velocity.y = BRIGHT_JUMP_FORCE if lanternLit else JUMP_FORCE
+			else:
+				velocity.y = DOUBLE_JUMP_FORCE
+				$doubleJumpParticles.restart()
 			
 			remainingJumps -= 1
 			if remainingJumps <= 0:

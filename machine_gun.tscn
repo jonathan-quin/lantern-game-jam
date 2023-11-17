@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://c0dm0h8aotv3j"]
+[gd_scene load_steps=6 format=3 uid="uid://c2ywewdosqr7"]
 
 [ext_resource type="Script" path="res://machine_gun.gd" id="1_e6q5c"]
 [ext_resource type="Texture2D" uid="uid://ftrmyyoox3pp" path="res://ThisIsntSuspitiouse.png" id="1_fvwjm"]
@@ -12,7 +12,7 @@ script = ExtResource("1_e6q5c")
 [node name="ThisIsntSuspitiouse" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 1)
 position = Vector2(2, 6)
-rotation = 0.166188
+rotation = 0.184785
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("1_fvwjm")
 
@@ -34,5 +34,9 @@ position = Vector2(55, 0)
 [node name="Fireing" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_2s3kn")
 autoplay = true
+
+[node name="losCheck" type="RayCast2D" parent="."]
+position = Vector2(36, 1)
+collision_mask = 2
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
