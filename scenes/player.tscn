@@ -4,7 +4,7 @@
 [ext_resource type="Shader" path="res://scenes/colorRemovalShader.gdshader" id="2_bryvo"]
 [ext_resource type="Script" path="res://scenes/GameCamera.gd" id="3_0tykd"]
 [ext_resource type="Texture2D" uid="uid://skgiuo3hacm7" path="res://textures/jeremySpritesFinal.png" id="3_1tqpr"]
-[ext_resource type="PackedScene" uid="uid://bj8xb7f8u0y33" path="res://light_source.tscn" id="3_lw75g"]
+[ext_resource type="PackedScene" uid="uid://bj8xb7f8u0y33" path="res://scenes/light_source.tscn" id="3_lw75g"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0ryjh"]
 radius = 4.0
