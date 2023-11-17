@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=3 uid="uid://b147phfyv6507"]
+
+[ext_resource type="Texture2D" uid="uid://ilqh0uwjhyl" path="res://SpikeThingSpin.png" id="1_7yiyj"]
+[ext_resource type="Script" path="res://spinning_blade.gd" id="1_au6fk"]
+[ext_resource type="Texture2D" uid="uid://ow663uoo6btr" path="res://big sawblade.png" id="3_4hon5"]
+
+[node name="SpinningBlade" type="Node2D"]
+script = ExtResource("1_au6fk")
+rps = -0.4
+length = 100.0
+startingRot = -180.0
+
+[node name="rotatable" type="Node2D" parent="."]
+rotation = -473.769
+
+[node name="SpikeBall" type="Sprite2D" parent="rotatable"]
+visible = false
+position = Vector2(50, 0)
+rotation = 169304.0
+texture = ExtResource("1_7yiyj")
+
+[node name="BigSawblade" type="Sprite2D" parent="rotatable"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(100, 0)
+rotation = 1727.06
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("3_4hon5")
+offset = Vector2(5, 0)
+
+[node name="Arm" type="ColorRect" parent="rotatable"]
+offset_top = -1.5
+offset_right = 100.0
+offset_bottom = 1.5
+color = Color(0, 0, 0, 1)
+
+[node name="display" type="ColorRect" parent="."]
+offset_top = -3.0
+offset_right = 100.0
+offset_bottom = 3.0
+rotation = -3.14159
+pivot_offset = Vector2(0, 3)
+color = Color(0.956863, 0.478431, 0.882353, 0.2)
