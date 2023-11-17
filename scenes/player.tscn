@@ -223,7 +223,6 @@ sprite_frames = SubResource("SpriteFrames_pyvve")
 animation = &"dash"
 
 [node name="invertableStuff" type="Node2D" parent="."]
-visible = false
 
 [node name="lightSource" parent="invertableStuff" instance=ExtResource("3_lw75g")]
 position = Vector2(6, 0)
