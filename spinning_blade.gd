@@ -33,9 +33,9 @@ func _process(delta):
 	$rotatable/BigSawblade.position.x = length
 	
 	$rotatable.rotation += deg_to_rad(rpm * 360/60 * delta)
-	$rotatable.rotation = $rotatable.rotation % 2 * PI
+	$rotatable.rotation = fmod( $rotatable.rotation, 2.0 * PI)
 	$rotatable/BigSawblade.rotation += BLADEROTSPEED * delta
-	$rotatable/BigSawblade.rotation = $rotatable/BigSawblade.rotation % 2 * PI
+	$rotatable/BigSawblade.rotation = fmod( $rotatable/BigSawblade.rotation, 2.0 * PI)
 	
 	$rotatable/BigSawblade.scale = Vector2.ONE * 0.05 * bladeSizeModifier
 	

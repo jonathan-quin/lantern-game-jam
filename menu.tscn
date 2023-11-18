@@ -18,7 +18,7 @@ func _process(delta):
 
 
 func _on_play_pressed():
-	ScreenTransition.change_scene(\"res://world.tscn\")
+	ScreenTransition.change_scene(\"res://levels/level1Tutorial.tscn\")
 	
 
 
