@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://be6fme4dr7qv1"
-path="res://.godot/imported/Hallow Halls.wav-bb6cecf2d97cf8e23358463faaa52689.sample"
+path="res://.godot/imported/Hallow Halls.wav-e08563342c2df18033dcc96e1c5d5ca1.sample"
 
 [deps]
 
-source_file="res://sounds/Hallow Halls.wav"
-dest_files=["res://.godot/imported/Hallow Halls.wav-bb6cecf2d97cf8e23358463faaa52689.sample"]
+source_file="res://Hallow Halls.wav"
+dest_files=["res://.godot/imported/Hallow Halls.wav-e08563342c2df18033dcc96e1c5d5ca1.sample"]
 
 [params]
 
