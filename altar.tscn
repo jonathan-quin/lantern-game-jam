@@ -1,38 +1,11 @@
 [gd_scene load_steps=7 format=3 uid="uid://dbccoa1brqu2o"]
 
-[ext_resource type="Texture2D" uid="uid://cd87es3oqi3yo" path="res://textures/altarOfdeath.png" id="1_glv2p"]
-[ext_resource type="Texture2D" uid="uid://1ttx2dvktbqu" path="res://textures/knife.webp" id="2_hlx4n"]
+[ext_resource type="Texture2D" uid="uid://cd87es3oqi3yo" path="res://altarOfdeath.png" id="2_3fdfl"]
+[ext_resource type="Texture2D" uid="uid://1ttx2dvktbqu" path="res://knife.webp" id="2_ptocj"]
 
 [sub_resource type="Curve" id="Curve_5n7n5"]
 _data = [Vector2(0.00886294, 0.976451), 0.0, 0.0, 0, 0, Vector2(0.787908, 1), 0.0, 0.0, 0, 0, Vector2(0.993129, 0.0288426), 0.0, 0.0, 0, 0]
 point_count = 3
-
-[sub_resource type="Animation" id="Animation_1qbbx"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Node2D/Knife:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(5, -29)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Node2D/Knife:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [-0.303147]
-}
 
 [sub_resource type="Animation" id="Animation_hds0x"]
 resource_name = "activate"
@@ -62,6 +35,33 @@ tracks/1/keys = {
 "values": [-0.303147, -0.801756, -1.58593, -1.58593, -0.894709, -0.332241, -0.332241, -0.863339, -0.863339, -0.863339]
 }
 
+[sub_resource type="Animation" id="Animation_1qbbx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/Knife:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(5, -29)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D/Knife:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.303147]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cmtih"]
 _data = {
 "RESET": SubResource("Animation_1qbbx"),
@@ -77,14 +77,14 @@ scale = Vector2(0.6, 0.6)
 modulate = Color(0, 0, 0, 1)
 z_index = -1
 scale = Vector2(0.05, 0.05)
-texture = ExtResource("1_glv2p")
+texture = ExtResource("2_3fdfl")
 
 [node name="Knife" type="Sprite2D" parent="Node2D"]
 modulate = Color(0, 0, 0, 1)
 position = Vector2(5, -29)
 rotation = -0.303147
 scale = Vector2(0.015, 0.015)
-texture = ExtResource("2_hlx4n")
+texture = ExtResource("2_ptocj")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 modulate = Color(0, 0, 0, 1)

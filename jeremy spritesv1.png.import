@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cd87es3oqi3yo"
-path="res://.godot/imported/altarOfdeath.png-89ccf4d802e7c7cf005b4f5e0fc74809.ctex"
+uid="uid://c2r0fhe3u40fy"
+path="res://.godot/imported/jeremy spritesv1.png-d6176eeeee26a1d2a67711508a246fa4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/altarOfdeath.png"
-dest_files=["res://.godot/imported/altarOfdeath.png-89ccf4d802e7c7cf005b4f5e0fc74809.ctex"]
+source_file="res://jeremy spritesv1.png"
+dest_files=["res://.godot/imported/jeremy spritesv1.png-d6176eeeee26a1d2a67711508a246fa4.ctex"]
 
 [params]
 

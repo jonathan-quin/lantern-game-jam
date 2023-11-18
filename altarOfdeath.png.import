@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://80ebacxqohoa"
-path="res://.godot/imported/SpikeHead.png-d7f13693a21d0cb768a1513490898e0a.ctex"
+uid="uid://cd87es3oqi3yo"
+path="res://.godot/imported/altarOfdeath.png-454a80881bddbe68c1dfc07f976803bb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/SpikeHead.png"
-dest_files=["res://.godot/imported/SpikeHead.png-d7f13693a21d0cb768a1513490898e0a.ctex"]
+source_file="res://altarOfdeath.png"
+dest_files=["res://.godot/imported/altarOfdeath.png-454a80881bddbe68c1dfc07f976803bb.ctex"]
 
 [params]
 
