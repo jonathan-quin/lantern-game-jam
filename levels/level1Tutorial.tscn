@@ -3,12 +3,12 @@
 [ext_resource type="Script" path="res://world.gd" id="1_bjrk8"]
 [ext_resource type="PackedScene" uid="uid://bwd8ys1cqiick" path="res://scenes/player.tscn" id="2_2cto7"]
 [ext_resource type="Texture2D" uid="uid://c1wn3hf8ekejb" path="res://textures/blackandwhitetilesetstart.png" id="3_wp3gt"]
-[ext_resource type="PackedScene" path="res://altar.tscn" id="4_54n85"]
+[ext_resource type="PackedScene" uid="uid://dbccoa1brqu2o" path="res://altar.tscn" id="4_54n85"]
 [ext_resource type="Shader" path="res://setColorShader.gdshader" id="5_babb2"]
 [ext_resource type="Script" path="res://shaderBackground.gd" id="6_vhm7w"]
 [ext_resource type="Shader" path="res://dither.gdshader" id="7_budey"]
 [ext_resource type="Texture2D" uid="uid://c1bcf56dtjncl" path="res://textures/bettertreething.png" id="8_jm14t"]
-[ext_resource type="PackedScene" path="res://light_source.tscn" id="9_3fd7g"]
+[ext_resource type="PackedScene" uid="uid://bj8xb7f8u0y33" path="res://light_source.tscn" id="9_3fd7g"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wh7ae"]
 texture = ExtResource("3_wp3gt")

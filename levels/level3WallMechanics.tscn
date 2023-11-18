@@ -1,15 +1,16 @@
-[gd_scene load_steps=17 format=3 uid="uid://dmodv4up7bqcs"]
+[gd_scene load_steps=18 format=3 uid="uid://dmodv4up7bqcs"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_qxf31"]
 [ext_resource type="PackedScene" uid="uid://bwd8ys1cqiick" path="res://scenes/player.tscn" id="2_a3lv3"]
 [ext_resource type="Texture2D" uid="uid://c1wn3hf8ekejb" path="res://textures/blackandwhitetilesetstart.png" id="3_6nbyj"]
-[ext_resource type="PackedScene" path="res://altar.tscn" id="4_7indk"]
+[ext_resource type="PackedScene" uid="uid://dbccoa1brqu2o" path="res://altar.tscn" id="4_7indk"]
 [ext_resource type="Shader" path="res://setColorShader.gdshader" id="5_y8vui"]
 [ext_resource type="Script" path="res://shaderBackground.gd" id="6_yqu88"]
 [ext_resource type="Shader" path="res://dither.gdshader" id="7_642p2"]
 [ext_resource type="Texture2D" uid="uid://c1bcf56dtjncl" path="res://textures/bettertreething.png" id="8_o1uy6"]
-[ext_resource type="PackedScene" path="res://light_source.tscn" id="9_jp7m0"]
+[ext_resource type="PackedScene" uid="uid://bj8xb7f8u0y33" path="res://light_source.tscn" id="9_jp7m0"]
 [ext_resource type="Texture2D" uid="uid://bywvph5piueao" path="res://textures/blackNWhiteSpikes.png" id="10_g25vq"]
+[ext_resource type="PackedScene" uid="uid://bhe2juy2506cm" path="res://spinning_blade.tscn" id="11_kq4av"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wh7ae"]
 texture = ExtResource("3_6nbyj")
@@ -268,3 +269,10 @@ fallOffRadius = 60
 [node name="dangerMap" type="TileMap" parent="hazards"]
 tile_set = SubResource("TileSet_81uf4")
 format = 2
+
+[node name="SpinningBlade" parent="." instance=ExtResource("11_kq4av")]
+z_index = 1
+position = Vector2(217, 56)
+rpm = 8.0
+length = 60.0
+bladeSizeModifier = 1
