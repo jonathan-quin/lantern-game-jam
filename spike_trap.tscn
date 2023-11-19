@@ -1,17 +1,37 @@
-[gd_scene load_steps=9 format=3 uid="uid://chbngwba0ldsa"]
+[gd_scene load_steps=10 format=3 uid="uid://chbngwba0ldsa"]
 
 [ext_resource type="Script" path="res://spike_trap.gd" id="1_uyb8n"]
 [ext_resource type="Texture2D" uid="uid://b1g6xsge0k22n" path="res://WaitingSpikes.png" id="2_csj1e"]
-[ext_resource type="Texture2D" uid="uid://bcx5hkapglpc8" path="res://ExtendedSpikes.png" id="3_7ukr5"]
+[ext_resource type="Texture2D" uid="uid://4l4xh5gbeoip" path="res://ExtendedSpikes.png" id="3_7ukr5"]
 [ext_resource type="AudioStream" uid="uid://ct3ujnu324vxb" path="res://SpikeTrapExtendingSound.mp3" id="4_icu8q"]
 [ext_resource type="AudioStream" uid="uid://digl7fw5d6y0t" path="res://RetractingSpikeTrapSound.mp3" id="5_h4gcm"]
 
-[sub_resource type="AnimatedTexture" id="AnimatedTexture_0xkrt"]
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_3xm1x"]
+resource_local_to_scene = true
 frames = 2
-speed_scale = 0.0
+speed_scale = 3.33067e-15
 frame_0/texture = ExtResource("2_csj1e")
 frame_1/texture = ExtResource("3_7ukr5")
 frame_1/duration = 1.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_am8lo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_csj1e")
+}],
+"loop": true,
+"name": &"in",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_7ukr5")
+}],
+"loop": true,
+"name": &"out",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c5rro"]
 size = Vector2(12, 7)
@@ -20,14 +40,19 @@ size = Vector2(12, 7)
 size = Vector2(12, 31)
 
 [node name="SpikeTrap" type="Node2D"]
-position = Vector2(45, 57)
 script = ExtResource("1_uyb8n")
 timeIn = 2.0
 timeOut = 0.5
 
 [node name="WaitingSpikes" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(0, -19)
-texture = SubResource("AnimatedTexture_0xkrt")
+texture = SubResource("AnimatedTexture_3xm1x")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -19)
+sprite_frames = SubResource("SpriteFrames_am8lo")
+animation = &"in"
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
@@ -36,6 +61,8 @@ position = Vector2(0, -3.5)
 shape = SubResource("RectangleShape2D_c5rro")
 
 [node name="damageArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="damageArea"]
 position = Vector2(0, -22.5)
@@ -43,6 +70,7 @@ shape = SubResource("RectangleShape2D_2x0pf")
 debug_color = Color(0.929412, 0.243137, 0.305882, 0.419608)
 
 [node name="Offset" type="Timer" parent="."]
+process_callback = 0
 
 [node name="SpikeTrapExtendingSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_icu8q")
@@ -50,4 +78,7 @@ stream = ExtResource("4_icu8q")
 [node name="SpikeTrapRetreatingSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_h4gcm")
 
+[node name="frameChanger" type="Timer" parent="."]
+
 [connection signal="timeout" from="Offset" to="." method="_on_offset_timeout"]
+[connection signal="timeout" from="frameChanger" to="." method="_on_frame_changer_timeout"]

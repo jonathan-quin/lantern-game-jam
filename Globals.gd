@@ -6,4 +6,11 @@ var cameraPosition = Vector2.ZERO
 var playerHurtProgress = 0
 
 
-var debug = false
+var debug = true
+
+var objectsColor = Color(1,1,1,1)
+var backgroundColor = Color(0,0,0,1)
+
+var lanternLight = 100
+
+

@@ -98,6 +98,7 @@ dash={
 2d_physics/layer_1="everything"
 2d_physics/layer_2="walls"
 2d_physics/layer_3="player"
+2d_physics/layer_4="instantDeath"
 
 [rendering]
 

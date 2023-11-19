@@ -5,7 +5,8 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_koujo"]
 shader = ExtResource("2_4rbb8")
-shader_parameter/value = -0.137
+shader_parameter/value = -0.463
+shader_parameter/color = Color(1, 1, 1, 1)
 
 [sub_resource type="Animation" id="Animation_6xbl7"]
 resource_name = "RESET"
@@ -90,6 +91,7 @@ mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
 [node name="deathRect" type="ColorRect" parent="."]
+modulate = Color(0.054902, 1, 1, 1)
 z_index = 4096
 material = SubResource("ShaderMaterial_koujo")
 anchors_preset = 15
@@ -98,6 +100,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+color = Color(0.286275, 1, 1, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Dissolve_rect")

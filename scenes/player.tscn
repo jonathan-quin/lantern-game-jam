@@ -1,10 +1,14 @@
-[gd_scene load_steps=21 format=3 uid="uid://bwd8ys1cqiick"]
+[gd_scene load_steps=25 format=3 uid="uid://bwd8ys1cqiick"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_aehhp"]
 [ext_resource type="Shader" path="res://scenes/colorRemovalShader.gdshader" id="2_bryvo"]
 [ext_resource type="Script" path="res://scenes/GameCamera.gd" id="3_0tykd"]
 [ext_resource type="PackedScene" uid="uid://bj8xb7f8u0y33" path="res://light_source.tscn" id="3_lw75g"]
 [ext_resource type="Texture2D" uid="uid://b6iaph6isefml" path="res://jeremySpritesFinal.png" id="3_tmnlt"]
+[ext_resource type="AudioStream" uid="uid://5d42hnpgnwm0" path="res://SoundEffects/Dash.mp3" id="6_ql7si"]
+[ext_resource type="AudioStream" uid="uid://dblscrckt84ti" path="res://SoundEffects/Whispering.mp3" id="7_7w4ey"]
+[ext_resource type="AudioStream" uid="uid://dayvjbrmtqqay" path="res://SoundEffects/doubleJump.mp3" id="8_hjevu"]
+[ext_resource type="AudioStream" uid="uid://n6i1vafpdmx3" path="res://SoundEffects/theLanternSFX/jump.mp3" id="9_gbgdu"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0ryjh"]
 radius = 4.0
@@ -212,7 +216,7 @@ _data = {
 
 [node name="player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 5
-collision_mask = 3
+collision_mask = 11
 script = ExtResource("1_aehhp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -292,5 +296,50 @@ angular_velocity_max = 800.0
 scale_amount_min = 2.5
 scale_amount_max = 7.0
 scale_amount_curve = SubResource("Curve_tv5ly")
+
+[node name="dashParticles" type="CPUParticles2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+emitting = false
+amount = 24
+lifetime = 0.2
+emission_shape = 3
+emission_rect_extents = Vector2(1, 10)
+direction = Vector2(2.08165e-12, -1)
+spread = 180.0
+gravity = Vector2(2.08165e-12, 30)
+initial_velocity_min = 2.0
+initial_velocity_max = 10.0
+angular_velocity_min = -800.0
+angular_velocity_max = 800.0
+scale_amount_min = 2.5
+scale_amount_max = 7.0
+scale_amount_curve = SubResource("Curve_tv5ly")
+
+[node name="CanvasLayer" type="Node2D" parent="."]
+
+[node name="lightLeftIndicator" type="ColorRect" parent="CanvasLayer"]
+z_index = 4000
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -250.0
+offset_top = -137.0
+offset_right = 250.0
+offset_bottom = -121.0
+grow_horizontal = 2
+color = Color(0.462745, 1, 1, 0)
+
+[node name="dashNoise" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_ql7si")
+
+[node name="whispering" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_7w4ey")
+volume_db = -7.333
+autoplay = true
+
+[node name="doubleJump" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_hjevu")
+
+[node name="jumpNoise" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_gbgdu")
 
 [connection signal="timeout" from="coyoteTime" to="." method="_on_coyote_time_timeout"]

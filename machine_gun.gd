@@ -71,5 +71,5 @@ func shoot(delta):
 	var bullet = bulletPath.instantiate()
 	get_parent().add_child(bullet)
 	
-	bullet.position = $Marker2D.global_position
-	bullet.rotation = $Marker2D.global_rotation + deg_to_rad(randf_range(-2,2))
+	bullet.global_position = $Marker2D.global_position
+	bullet.global_rotation = $Marker2D.global_rotation + deg_to_rad(randf_range(-2,2))

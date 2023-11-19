@@ -5,7 +5,7 @@ extends Node2D
 @export var rpm = 2.0
 @export var length = 25.0
 @export var startingRot = 25.0
-@export var bladeSizeModifier = 2
+@export var bladeSizeModifier = 2.0
 
 
 const BLADEROTSPEED = 0.02 * 360

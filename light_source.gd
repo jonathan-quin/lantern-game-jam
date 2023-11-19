@@ -41,10 +41,14 @@ func _process(delta):
 		pass
 	else:
 		setGlobalPosition(global_position)
+		
+		lightShader.material.set_shader_parameter( "objects", Globals.objectsColor)
+		
 		lightShader.material.set_shader_parameter( "enabled", 0 if Globals.debug else 1)
 		lightShader.material.set_shader_parameter( "fullyLitRange", fullLitRadius)
 		lightShader.material.set_shader_parameter( "falloffRange", fallOffRadius)
 		lightShader.material.set_shader_parameter( "falloffCurve", fallOffCurve)
+		
 		pass
 
 func setGlobalPosition(globalPos):

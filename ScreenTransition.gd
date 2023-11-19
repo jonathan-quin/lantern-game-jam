@@ -1,5 +1,11 @@
 extends CanvasLayer
 
+func _process(delta):
+	$Dissolve_rect.color = Globals.backgroundColor
+	$deathRect.material.set_shader_parameter( "color", Globals.objectsColor)
+	
+
+
 func change_scene(target: String) -> void:  # change screen animation
 	$AnimationPlayer.play('dissolve')
 	await $AnimationPlayer.animation_finished
@@ -20,8 +26,9 @@ var currentLevel = 0
 var levels = [
 	"res://levels/level1Tutorial.tscn",
 	"res://levels/level2movementTutorial.tscn",
-	"res://levels/level3WallMechanics.tscn"
-	
+	"res://levels/level3WallMechanics.tscn",
+	"res://levels/level4MoreMovement.tscn",
+	"res://levels/level5advancedWallClimbing.tscn"
 	
 	
 	
