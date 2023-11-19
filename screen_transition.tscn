@@ -5,7 +5,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_koujo"]
 shader = ExtResource("2_4rbb8")
-shader_parameter/value = -0.463
+shader_parameter/value = -0.137
 shader_parameter/color = Color(1, 1, 1, 1)
 
 [sub_resource type="Animation" id="Animation_6xbl7"]

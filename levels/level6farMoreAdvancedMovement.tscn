@@ -216,6 +216,9 @@ sources/0 = SubResource("TileSetAtlasSource_e1v12")
 [node name="levelTemplate" type="Node2D"]
 position = Vector2(-30, 4)
 script = ExtResource("1_u5nx8")
+objects = Color(0.929412, 0.356863, 0.458824, 1)
+background = Color(0.552941, 0.321569, 0.615686, 1)
+hurtProgress = 4
 
 [node name="player" parent="." instance=ExtResource("2_020we")]
 position = Vector2(81, 46)

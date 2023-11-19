@@ -318,6 +318,7 @@ scale_amount_curve = SubResource("Curve_tv5ly")
 [node name="CanvasLayer" type="Node2D" parent="."]
 
 [node name="lightLeftIndicator" type="ColorRect" parent="CanvasLayer"]
+visible = false
 z_index = 4000
 anchors_preset = 10
 anchor_right = 1.0

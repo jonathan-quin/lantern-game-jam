@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dmodv4up7bqcs"]
+[gd_scene load_steps=21 format=3 uid="uid://dmodv4up7bqcs"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_qxf31"]
 [ext_resource type="PackedScene" uid="uid://bwd8ys1cqiick" path="res://scenes/player.tscn" id="2_a3lv3"]
@@ -9,9 +9,11 @@
 [ext_resource type="Shader" path="res://dither.gdshader" id="7_642p2"]
 [ext_resource type="Texture2D" uid="uid://c1bcf56dtjncl" path="res://textures/bettertreething.png" id="8_o1uy6"]
 [ext_resource type="PackedScene" uid="uid://bj8xb7f8u0y33" path="res://light_source.tscn" id="9_jp7m0"]
+[ext_resource type="Texture2D" uid="uid://cc3bhwyh83p4p" path="res://textures/theLanternBackgroundTextures/building03.png" id="10_18bfk"]
 [ext_resource type="Texture2D" uid="uid://bywvph5piueao" path="res://textures/blackNWhiteSpikes.png" id="10_g25vq"]
+[ext_resource type="Texture2D" uid="uid://bh4vfhjitnn04" path="res://textures/theLanternBackgroundTextures/streetSign01.png" id="11_j5n2b"]
 [ext_resource type="PackedScene" uid="uid://bhe2juy2506cm" path="res://spinning_blade.tscn" id="11_kq4av"]
-[ext_resource type="PackedScene" uid="uid://chbngwba0ldsa" path="res://spike_trap.tscn" id="12_34krt"]
+[ext_resource type="PackedScene" uid="uid://c0yyx28idqla4" path="res://tiki_torch.tscn" id="12_147i5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wh7ae"]
 texture = ExtResource("3_6nbyj")
@@ -215,6 +217,7 @@ sources/0 = SubResource("TileSetAtlasSource_e1v12")
 script = ExtResource("1_qxf31")
 objects = Color(0.545098, 0.411765, 0.172549, 1)
 background = Color(0.0509804, 0.168627, 0.423529, 1)
+hurtProgress = 1
 
 [node name="player" parent="." instance=ExtResource("2_a3lv3")]
 position = Vector2(-41, 47)
@@ -260,12 +263,32 @@ rotation = -0.280523
 scale = Vector2(0.376227, 0.416149)
 texture = ExtResource("8_o1uy6")
 
+[node name="Building03" type="Sprite2D" parent="background"]
+z_index = -1
+use_parent_material = true
+position = Vector2(253, 54)
+rotation = -0.273371
+scale = Vector2(0.506659, 0.360192)
+texture = ExtResource("10_18bfk")
+
+[node name="StreetSign01" type="Sprite2D" parent="background"]
+z_index = -1
+use_parent_material = true
+position = Vector2(180, -319)
+rotation = -0.387171
+scale = Vector2(0.764504, 0.365376)
+texture = ExtResource("11_j5n2b")
+
 [node name="lights" type="Node2D" parent="."]
 
 [node name="lightSource" parent="lights" instance=ExtResource("9_jp7m0")]
 position = Vector2(-56, 34)
 fullLitRadius = 30
 fallOffRadius = 60
+
+[node name="tikiTorch3" parent="lights" instance=ExtResource("12_147i5")]
+position = Vector2(491, -267)
+rotation = 0.933076
 
 [node name="hazards" type="Node2D" parent="."]
 
@@ -279,6 +302,3 @@ position = Vector2(225, 41)
 rpm = 16.0
 length = 60.0
 bladeSizeModifier = 0.8
-
-[node name="SpikeTrap" parent="hazards" instance=ExtResource("12_34krt")]
-position = Vector2(46, 65)

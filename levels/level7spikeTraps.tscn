@@ -215,6 +215,9 @@ sources/0 = SubResource("TileSetAtlasSource_e1v12")
 position = Vector2(-30, 4)
 script = ExtResource("1_rtshu")
 lanternLight = 100000.0
+objects = Color(0.819608, 0, 0.00784314, 1)
+background = Color(0, 0, 0.372549, 1)
+hurtProgress = 5
 
 [node name="player" parent="." instance=ExtResource("2_3d7ne")]
 position = Vector2(81, 46)
@@ -267,6 +270,7 @@ fallOffRadius = 60
 [node name="lightSource2" parent="lights" instance=ExtResource("9_lfgtg")]
 position = Vector2(420, -333)
 fallOffRadius = 30
+fallOffCurve = 1.0
 
 [node name="hazards" type="Node2D" parent="."]
 z_index = -1

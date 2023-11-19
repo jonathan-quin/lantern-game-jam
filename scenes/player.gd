@@ -72,6 +72,7 @@ func _ready():
 
 func _physics_process(delta):
 	
+	$CanvasLayer/lightLeftIndicator.visible = true
 	$CanvasLayer/lightLeftIndicator.color = Globals.objectsColor
 	$AnimatedSprite2D.material.set_shader_parameter( "progress", Globals.playerHurtProgress)
 	

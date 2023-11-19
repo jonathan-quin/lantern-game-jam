@@ -12,8 +12,8 @@ dest_files=["res://.godot/imported/saw.mp3-5fe93d63af963e593b454cdfa6ee1e14.mp3s
 
 [params]
 
-loop=false
-loop_offset=0
-bpm=0
+loop=true
+loop_offset=0.0
+bpm=0.0
 beat_count=0
 bar_beats=4

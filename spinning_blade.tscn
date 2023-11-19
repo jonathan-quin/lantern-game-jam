@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bhe2juy2506cm"]
+[gd_scene load_steps=7 format=3 uid="uid://bhe2juy2506cm"]
 
 [ext_resource type="Script" path="res://spinning_blade.gd" id="1_au6fk"]
 [ext_resource type="Shader" path="res://spinning_blade.gdshader" id="2_ksvoe"]
 [ext_resource type="Texture2D" uid="uid://ow663uoo6btr" path="res://big sawblade.png" id="3_4hon5"]
+[ext_resource type="AudioStream" uid="uid://w3dyyr3jciib" path="res://SoundEffects/theLanternSFX/saw.mp3" id="4_o5ly0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wfudd"]
 shader = ExtResource("2_ksvoe")
@@ -18,14 +19,14 @@ startingRot = -180.0
 bladeSizeModifier = 3
 
 [node name="rotatable" type="Node2D" parent="."]
-rotation = 5.41396
+rotation = 5.03106
 
 [node name="BigSawblade" type="Sprite2D" parent="rotatable"]
 modulate = Color(0, 0, 0, 1)
 self_modulate = Color(0, 0, 0, 1)
 material = SubResource("ShaderMaterial_wfudd")
 position = Vector2(100, 0)
-rotation = 0.785181
+rotation = 6.23231
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("3_4hon5")
 offset = Vector2(5, 0)
@@ -36,6 +37,13 @@ collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="rotatable/BigSawblade/playerDetect"]
 shape = SubResource("CircleShape2D_cdvj5")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="rotatable/BigSawblade"]
+stream = ExtResource("4_o5ly0")
+volume_db = 2.0
+autoplay = true
+max_distance = 300.0
+attenuation = 3.4822
 
 [node name="Arm" type="ColorRect" parent="rotatable"]
 offset_top = -1.5

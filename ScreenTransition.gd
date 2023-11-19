@@ -28,8 +28,11 @@ var levels = [
 	"res://levels/level2movementTutorial.tscn",
 	"res://levels/level3WallMechanics.tscn",
 	"res://levels/level4MoreMovement.tscn",
-	"res://levels/level5advancedWallClimbing.tscn"
-	
+	"res://levels/level5advancedWallClimbing.tscn",
+	"res://levels/level6farMoreAdvancedMovement.tscn",
+	"res://levels/level7spikeTraps.tscn",
+	"res://levels/level8spikeTrapsforreal.tscn",
+	"res://levels/endingLevel.tscn"
 	
 	
 ]

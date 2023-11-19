@@ -6,7 +6,7 @@ var cameraPosition = Vector2.ZERO
 var playerHurtProgress = 0
 
 
-var debug = true
+var debug = false
 
 var objectsColor = Color(1,1,1,1)
 var backgroundColor = Color(0,0,0,1)
